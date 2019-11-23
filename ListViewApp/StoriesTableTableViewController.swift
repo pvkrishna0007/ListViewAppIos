@@ -45,7 +45,7 @@ class StoriesTableTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! HeadLineTableViewCell
 
         let model = headlines[indexPath.section].items[indexPath.row]
-        let lbText = "\(model) hjhjjkkkj jjkjkj kknnk kkk"
+        let lbText = "\(model)"
 //        cell.textLabel?.text = lbText
 //        cell.detailTextLabel?.text = "mySub"
 //        cell.imageView?.image = UIImage(named: model)
@@ -72,5 +72,14 @@ class StoriesTableTableViewController: UITableViewController {
         let moving = headlines[sourceIndexPath.section].items[sourceIndexPath.row];
         headlines[sourceIndexPath.section].items.remove(at: sourceIndexPath.row)
         headlines[destinationIndexPath.section].items.insert(moving, at: destinationIndexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if(indexPath.row == 2){
+            return false;
+        }
+        else{
+            return true
+        }
     }
 }
